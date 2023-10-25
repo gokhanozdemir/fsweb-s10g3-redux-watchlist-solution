@@ -1,3 +1,4 @@
+import { act } from "react-dom/test-utils";
 import { ADD_FAV, REMOVE_FAV } from "../actions/favoritesAction";
 
 const inialState = {
@@ -23,6 +24,11 @@ function favoritesReducer(state = inialState, action) {
       return {
         ...state,
         favMovies: [action.payload, ...state.favMovies],
+      };
+    case REMOVE_FAV:
+      return {
+        ...state,
+        favMovies: state.favMovies.filter((m) => m.id !== action.payload.id),
       };
     default:
       return state;
