@@ -3,14 +3,14 @@ import { Switch, Route, NavLink } from "react-router-dom";
 import Movie from "./components/Movie";
 import FavMovie from "./components/FavMovie";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 function App() {
-  const [sira, setSira] = useState(0);
-  const favMovies = [];
+  const sira = useSelector((state) => state.moviesReducer.order);
+  const favMovies = useSelector((state) => state.favoritesReducer.favMovies);
 
   function sonrakiFilm() {
-    setSira(sira + 1);
+    // dispatch
   }
 
   return (
