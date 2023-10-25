@@ -1,4 +1,3 @@
-import { act } from "react-dom/test-utils";
 import { ADD_FAV, REMOVE_FAV } from "../actions/favoritesAction";
 
 const inialState = {

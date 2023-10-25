@@ -5,6 +5,8 @@ import {
 } from "redux";
 import logger from "redux-logger";
 
+import { composeWithDevTools } from "@redux-devtools/extension";
+
 import moviesReducer from "./reducers/moviesReducer";
 import favoritesReducer from "./reducers/favoritesReducer";
 
@@ -13,6 +15,9 @@ const rootReducer = combineReducers({
   favoritesReducer,
 });
 
-const store = createStore(rootReducer, applyMiddleware(logger));
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(logger))
+);
 
 export default store;

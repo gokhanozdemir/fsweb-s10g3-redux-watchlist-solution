@@ -21,7 +21,6 @@ function moviesReducer(state = inialState, action) {
         order: state.order + 1,
         disabledNavDirection: null,
       };
-
     case PREV:
       if (state.order === 0) {
         return {
