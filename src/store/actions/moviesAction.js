@@ -10,3 +10,11 @@ export function nextMovie() {
 export function prevMovie() {
   return { type: PREV };
 }
+
+export function removeMovie(movie) {
+  return { type: REMOVE_MOV, payload: movie };
+}
+
+export function recycleMovie(movie) {
+  return { type: RECYCLE_MOV, payload: movie };
+}

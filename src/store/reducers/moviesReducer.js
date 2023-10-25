@@ -1,5 +1,5 @@
 import { movies } from "../../movies";
-import { NEXT, PREV } from "../actions/moviesAction";
+import { NEXT, PREV, RECYCLE_MOV, REMOVE_MOV } from "../actions/moviesAction";
 
 const inialState = {
   movies: movies,
@@ -33,6 +33,16 @@ function moviesReducer(state = inialState, action) {
         ...state,
         order: state.order - 1,
         disabledNavDirection: null,
+      };
+    case REMOVE_MOV:
+      return {
+        ...state,
+        movies: state.movies.filter((m) => m.id !== action.payload.id),
+      };
+    case RECYCLE_MOV:
+      return {
+        ...state,
+        movies: [action.payload, ...state.movies],
       };
     default:
       return state;
