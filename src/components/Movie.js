@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 
 export default function Movie(props) {
   const movies = useSelector((state) => state.moviesReducer.movies);
-  const movie = movies[props.sira];
+  const order = useSelector((state) => state.moviesReducer.order);
+  const movie = movies[order];
 
   return (
     <div className="flex bg-white shadow-lg items-start">
