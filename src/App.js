@@ -1,14 +1,15 @@
-import { useState } from "react";
 import { Switch, Route, NavLink } from "react-router-dom";
 import Movie from "./components/Movie";
 import FavMovie from "./components/FavMovie";
 
 import { useSelector, useDispatch } from "react-redux";
-import { NEXT, PREV } from "./store/actions/moviesAction";
-
+import { NEXT, PREV, REMOVE_MOV } from "./store/actions/moviesAction";
+import { ADD_FAV } from "./store/actions/favoritesAction";
 function App() {
   const favMovies = useSelector((state) => state.favoritesReducer.favMovies);
-  const disabledNav = useSelector((state) => state.moviesReducer.disabledNav);
+  const { disabledNav, order, movies } = useSelector(
+    (state) => state.moviesReducer
+  );
   const dispatch = useDispatch();
 
   function oncekiFilm() {
@@ -19,6 +20,11 @@ function App() {
   function sonrakiFilm() {
     // setSira(sira + 1);
     dispatch({ type: NEXT });
+  }
+
+  function addToFavs() {
+    dispatch({ type: ADD_FAV, payload: movies[order] });
+    dispatch({ type: REMOVE_MOV, payload: movies[order] });
   }
 
   return (
@@ -59,7 +65,10 @@ function App() {
             >
               Sıradaki
             </button>
-            <button className="select-none px-4 py-2 bg-blue-700 hover:bg-blue-600  text-white">
+            <button
+              onClick={addToFavs}
+              className="select-none px-4 py-2 bg-blue-700 hover:bg-blue-600  text-white"
+            >
               Listeme ekle
             </button>
           </div>
