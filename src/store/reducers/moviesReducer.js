@@ -1,15 +1,15 @@
-import { movies } from "../../movies";
+import { movies } from "./../../movies";
 
-const inialState = {
+const initialData = {
   movies: movies,
-  order: 0,
+  sira: 0,
 };
 
-function moviesReducer(state = inialState, action) {
+const moviesReducer = (state = initialData, action) => {
   switch (action.type) {
     default:
       return state;
   }
-}
+};
 
 export default moviesReducer;

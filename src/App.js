@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 function App() {
   const [sira, setSira] = useState(0);
-  const favMovies = [];
+  const favMovies = useSelector((state) => state.favoritesReducer.favMovies);
 
   function sonrakiFilm() {
     setSira(sira + 1);

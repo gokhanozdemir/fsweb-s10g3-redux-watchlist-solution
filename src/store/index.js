@@ -9,7 +9,7 @@ import moviesReducer from "./reducers/moviesReducer";
 import favoritesReducer from "./reducers/favoritesReducer";
 
 const rootReducer = combineReducers({
-  moviesReducer,
+  moviesReducer: moviesReducer,
   favoritesReducer,
 });
 
