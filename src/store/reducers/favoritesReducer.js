@@ -23,7 +23,14 @@ function favoritesReducer(state = inialState, action) {
         ...state,
         favMovies: [...state.favMovies, action.payload],
       };
-
+    case REMOVE_FAV:
+      const remainingFavs = state.favMovies.filter(
+        (favMovie) => favMovie.id !== action.payload
+      );
+      return {
+        ...state,
+        favMovies: remainingFavs,
+      };
     default:
       return state;
   }

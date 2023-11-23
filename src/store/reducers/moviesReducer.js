@@ -25,7 +25,16 @@ const moviesReducer = (state = initialData, action) => {
       const remainingMovies = state.movies.filter(
         (movie) => movie.id !== action.payload.id
       );
-      return { ...state, movies: remainingMovies };
+      return {
+        ...state,
+        movies: remainingMovies,
+        order:
+          state.order === state.movies.length - 1
+            ? state.order - 1
+            : state.order,
+      };
+    case RECYCLE_MOV:
+      return { ...state, movies: [...state.movies, action.payload] };
     default:
       return state;
   }

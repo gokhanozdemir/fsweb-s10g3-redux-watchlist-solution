@@ -22,7 +22,7 @@ function App() {
     dispatch({ type: NEXT });
   }
 
-  function addToFavs() {
+  function favoriyeEkle() {
     dispatch({ type: ADD_FAV, payload: movies[order] });
     dispatch({ type: REMOVE_MOV, payload: movies[order] });
   }
@@ -66,7 +66,7 @@ function App() {
               Sıradaki
             </button>
             <button
-              onClick={addToFavs}
+              onClick={favoriyeEkle}
               className="select-none px-4 py-2 bg-blue-700 hover:bg-blue-600  text-white"
             >
               Listeme ekle
@@ -77,7 +77,7 @@ function App() {
         <Route path="/listem">
           <div>
             {favMovies.map((movie) => (
-              <FavMovie key={movie.id} title={movie.title} id={movie.id} />
+              <FavMovie key={movie.id} movie={movie} />
             ))}
           </div>
         </Route>
